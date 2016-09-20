@@ -1,7 +1,7 @@
 {
-  "name": "mern-starter",
-  "version": "2.0.0",
-  "description": "Boilerplate project for building Isomorphic apps using React and Redux",
+  "name": "example-app",
+  "version": "0.1.0",
+  "description": "Example app for react course",
   "scripts": {
     "test": "cross-env NODE_ENV=test PORT=8080 MONGO_URL=mongodb://localhost:27017/mern-test node_modules/.bin/nyc node --harmony-proxies node_modules/.bin/ava",
     "watch:test": "npm run test -- --watch",
@@ -16,20 +16,6 @@
     "slate": "rimraf node_modules && npm install",
     "lint": "eslint client server"
   },
-  "pre-commit": [
-    "lint",
-    "test"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Hashnode/mern-starter.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Hashnode/mern-starter/issues"
-  },
-  "homepage": "https://github.com/Hashnode/mern-starter#readme",
-  "author": "Prashant Abhishek <prashant.abhishek7g@gmail.com>, Mayank Chandola <imayankchd@gmail.com>, Sandeep Panda <sandeep@hashnode.com>, Syed Fazle Rahman <fazle@hashnode.com>, Alkshendra Maurya <alkshendra@hashnode.com>",
-  "license": "MIT",
   "dependencies": {
     "babel-core": "^6.9.1",
     "body-parser": "^1.15.1",
@@ -92,7 +78,6 @@
     "postcss-focus": "^1.0.0",
     "postcss-loader": "^0.9.1",
     "postcss-reporter": "^1.3.3",
-    "pre-commit": "^1.1.3",
     "react-addons-test-utils": "^15.1.0",
     "react-hot-loader": "^3.0.0-beta.2",
     "redux-ava": "^2.0.0",
@@ -112,7 +97,7 @@
     "webpack-manifest-plugin": "^1.0.1"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "ava": {
     "files": [
