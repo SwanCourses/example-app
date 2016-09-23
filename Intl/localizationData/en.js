@@ -11,7 +11,14 @@ export default {
     authorName: 'Author\'s Name',
     postTitle: 'Post Title',
     postContent: 'Post Content',
-    submit: 'Submit',
+    createNewProduct: 'Добавить товар',
+    productName: 'Наименование',
+    productCode: 'Артикул',
+    productDescription: 'Описание',
+    productPrice: 'Цена',
+    categoryName: 'Название категории',
+    createNewCategory: 'Создать новую категорию',
+    submit: 'Добавить',
     comment: `user {name} {value, plural,
     	  =0 {does not have any comments}
     	  =1 {has # comment}
