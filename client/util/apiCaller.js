@@ -24,3 +24,22 @@ export default function callApi(endpoint, method = 'get', body) {
     error => error
   );
 }
+
+export function callApiForm(endpoint, method = 'get', body) {
+  return fetch(`${API_URL}/${endpoint}`, {
+    method,
+    body,
+  })
+    .then(response => response.json().then(json => ({ json, response })))
+    .then(({ json, response }) => {
+      if (!response.ok) {
+        return Promise.reject(json);
+      }
+
+      return json;
+    })
+    .then(
+      response => response,
+      error => error
+    );
+}
