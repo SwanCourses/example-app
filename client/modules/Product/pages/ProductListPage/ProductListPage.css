@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+}
+
+.container .products {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.container .products .product {
+  margin-bottom: 20px;
+}
+
+.container .filter-panel {
+  width: 300px;
+}

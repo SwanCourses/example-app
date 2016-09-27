@@ -2,6 +2,7 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import App from './modules/App/App';
+import Product from './modules/Product/Product';
 
 // require.ensure polyfill for node
 if (typeof require.ensure !== 'function') {
@@ -19,6 +20,7 @@ if (process.env.NODE_ENV !== 'production') {
   require('./modules/Post/pages/PostListPage/PostListPage');
   require('./modules/Post/pages/PostDetailPage/PostDetailPage');
   require('./modules/Product/pages/ProductFormPage/ProductFormPage');
+  require('./modules/Product/pages/ProductListPage/ProductListPage');
 }
 
 // react-router setup with code-splitting
@@ -40,13 +42,22 @@ export default (
         });
       }}
     />
-    <Route
-      path="/products/new"
+    <Route path="/products" component={Product}>
+      <IndexRoute
+        getComponent={(nextState, cb) => {
+          require.ensure([], require => {
+            cb(null, require('./modules/Product/pages/ProductListPage/ProductListPage').default);
+          });
+        }}
+      />
+      <Route
+      path="new"
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
           cb(null, require('./modules/Product/pages/ProductFormPage/ProductFormPage').default);
         });
       }}
     />
+    </Route>
   </Route>
 );
