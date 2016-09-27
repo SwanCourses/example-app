@@ -28,7 +28,9 @@ class ProductFormPage extends Component {
     form.append('product[price]', this.state.price);
     form.append('product[description]', this.state.description);
 
-      form.append('product[photo]', this.refs.photo.files[0], this.refs.photo.files[0].name);
+    for (let i = 0, file; file = this.refs.photos.files[i]; i++) {
+      form.append('product[photos]', file, file.name);
+    }
 
     this.props.dispatch(addProductRequest(form))
   };
@@ -50,7 +52,7 @@ class ProductFormPage extends Component {
                     className={styles['form-field']}
                     name="description"/>
           <div className={styles.photos}>
-            <input ref="photo" type="file" onChange={this.onFileLoad}/>
+            <input ref="photos" type="file" onChange={this.onFileLoad} multiple="multiple"/>
           </div>
           <a className={styles['post-submit-button']} href="#" onClick={this.addProduct}><FormattedMessage id="submit"/></a>
         </div>
