@@ -1,0 +1,22 @@
+.container {
+  cursor: pointer;
+  width: 250px;
+}
+
+.container .picture {
+  width: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+}
+
+.container .picture img {
+  height: auto;
+  max-width: 100%;
+}
+
+.container .info {
+  padding: 10px 0;
+  width: 100%;
+}
