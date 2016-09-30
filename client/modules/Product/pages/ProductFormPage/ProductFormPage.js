@@ -65,7 +65,7 @@ ProductFormPage.propTypes = {
   intl: intlShape.isRequired,
 };
 
-function mapStateToProps(state, props) {
+function mapStateToProps(store, props) {
   return {};
 }
 

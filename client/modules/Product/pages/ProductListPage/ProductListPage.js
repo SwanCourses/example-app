@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ProductListItem from '../../components/ProductListItem/ProductListItem';
 
+import { Link } from 'react-router';
 import styles from './ProductListPage.css';
 
 // Import Selectors
@@ -29,6 +30,7 @@ class ProductListPage extends Component {
           <input type="search" value={this.props.searchQuery} placeholder="Type name..."
                  onChange={e=>this.props.dispatch(setSearchQuery(e.target.value))}/>
         </div>
+<Link to="/products/new">New product</Link>
 
         <div className={styles.products}>
           {
