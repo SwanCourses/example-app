@@ -1,0 +1,41 @@
+.container .product .photos .picture {
+  width: 150px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 5px;
+
+}
+
+.container .product .photos .picture img {
+  height: auto;
+  max-width: 100%;
+}
+
+.container .product .photos {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  flex: 1 60%;
+}
+
+.container .product {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.container .filter-panel {
+  width: 300px;
+}
+
+.container {
+  display: flex;
+}
+.container .product .info {
+  flex: 1 40%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+}

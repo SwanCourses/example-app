@@ -20,6 +20,7 @@ if (process.env.NODE_ENV !== 'production') {
   require('./modules/Post/pages/PostListPage/PostListPage');
   require('./modules/Post/pages/PostDetailPage/PostDetailPage');
   require('./modules/Product/pages/ProductFormPage/ProductFormPage');
+  require('./modules/Product/pages/ProductDetailPage/ProductDetailPage');
   require('./modules/Product/pages/ProductListPage/ProductListPage');
 }
 
@@ -51,13 +52,21 @@ export default (
         }}
       />
       <Route
-      path="new"
-      getComponent={(nextState, cb) => {
-        require.ensure([], require => {
-          cb(null, require('./modules/Product/pages/ProductFormPage/ProductFormPage').default);
-        });
-      }}
-    />
+        path="new"
+        getComponent={(nextState, cb) => {
+          require.ensure([], require => {
+            cb(null, require('./modules/Product/pages/ProductFormPage/ProductFormPage').default);
+          });
+        }}
+      />
+      <Route
+        path=":cuid"
+        getComponent={(nextState, cb) => {
+          require.ensure([], require => {
+            cb(null, require('./modules/Product/pages/ProductDetailPage/ProductDetailPage').default);
+          });
+        }}
+      />
     </Route>
   </Route>
 );
