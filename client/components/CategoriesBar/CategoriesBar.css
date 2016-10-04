@@ -1,0 +1,21 @@
+.categories-list {
+  list-style-type: none;
+}
+
+.categories-list li {
+  text-decoration: none;
+  opacity: 0.8;
+  margin: 5px 0;
+  padding: 5px;
+}
+
+.categories-list li:hover {
+  cursor: pointer;
+  background-color: #7f7f7f;
+  opacity: 1;
+  color: white;
+}
+
+.header {
+  border-bottom: 1px solid #7f7f7f;
+}
