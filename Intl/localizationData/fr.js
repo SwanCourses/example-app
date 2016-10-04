@@ -34,5 +34,6 @@ export default {
   		  =1 {has # comment}
   		  other {has # comments}
   		} as of {date} (in real app this would be translated to French)`,
+    categoriesBarHeader: 'Найменування'
   },
 };

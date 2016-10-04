@@ -11,7 +11,11 @@ import styles from './ProductListPage.css';
 
 // Import Selectors
 import { getProducts } from '../../ProductReducer';
+
+import { getCategories } from '../../../Category/CategoryReducer';
 import { setSearchQuery } from '../../ProductActions';
+
+import CategoriesBar from '../../../../components/CategoriesBar/CategoriesBar';
 
 class ProductListPage extends Component {
   constructor(props) {
@@ -29,8 +33,10 @@ class ProductListPage extends Component {
         <div className={styles['filter-panel']}>
           <input type="search" value={this.props.searchQuery} placeholder="Type name..."
                  onChange={e=>this.props.dispatch(setSearchQuery(e.target.value))}/>
+
+          <CategoriesBar {...this.props} onSelect={cuid=>alert(cuid)}/>
         </div>
-<Link to="/products/new">New product</Link>
+        <Link to="/products/new">New product</Link>
 
         <div className={styles.products}>
           {
@@ -50,6 +56,7 @@ class ProductListPage extends Component {
 // Retrieve data from store as props
 function mapStateToProps(state) {
   return {
+    categories: getCategories(state),
     searchQuery: state.products.searchQuery,
     products: getProducts(state, state.products.searchQuery),
   };

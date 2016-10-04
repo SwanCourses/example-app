@@ -43,6 +43,14 @@ export default (
         });
       }}
     />
+    <Route
+      path="/categories/new"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./modules/Category/pages/CategoryFormPage/CategoryFormPage').default);
+        });
+      }}
+    />
     <Route path="/products" component={Product}>
       <IndexRoute
         getComponent={(nextState, cb) => {

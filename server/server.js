@@ -34,6 +34,7 @@ import routes from '../client/routes';
 import { fetchComponentData } from './util/fetchData';
 import posts from './routes/post.routes';
 import products from './routes/product.routes';
+import categories from './routes/category.routes';
 import dummyData from './dummyData';
 import serverConfig from './config';
 
@@ -64,7 +65,7 @@ app.use(Express.static(path.resolve(__dirname, '../dist')));
 app.use('/uploads', Express.static(path.resolve(__dirname, '../uploads')));
 app.use('/api', posts);
 app.use('/api', products);
-
+app.use('/api', categories);
 // Render Initial HTML
 const renderFullPage = (html, initialState) => {
   const head = Helmet.rewind();
