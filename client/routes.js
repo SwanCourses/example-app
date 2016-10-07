@@ -75,6 +75,14 @@ export default (
           });
         }}
       />
+      <Route
+        path=":cuid/edit"
+        getComponent={(nextState, cb) => {
+          require.ensure([], require => {
+            cb(null, require('./modules/Product/pages/ProductFormPage/ProductFormPage').default);
+          });
+        }}
+      />
     </Route>
   </Route>
 );

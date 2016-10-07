@@ -19,6 +19,8 @@ export default {
     categoryName: 'Название категории',
     createNewCategory: 'Создать новую категорию',
     submit: 'Добавить',
+
+    edit: 'Редактировать',
     comment: `user {name} {value, plural,
     	  =0 {does not have any comments}
     	  =1 {has # comment}

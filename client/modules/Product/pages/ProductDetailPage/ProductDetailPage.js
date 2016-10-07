@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import styles from './ProductDetailPage.css';
 
+import { Link } from 'react-router';
 // Import Selectors
 import { getProduct } from '../../ProductReducer';
 
@@ -30,6 +31,8 @@ export class ProductDetailPage extends Component {
             <div className={styles.price}>{this.props.product.price + ' грн'}</div>
             <div className={styles.price}>{this.salesPrice() + ' грн'}</div>
             <div className={styles.description}>{this.props.product.description}</div>
+
+            <Link to={`/products/${this.props.product.cuid}/edit`}><FormattedMessage id="edit"/></Link>
           </div>
         </div>
       </div>
