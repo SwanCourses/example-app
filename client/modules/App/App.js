@@ -14,6 +14,8 @@ import Footer from './components/Footer/Footer';
 import { toggleAddPost } from './AppActions';
 import { fetchCategories } from '../Category/CategoryActions';
 import { switchLanguage } from '../../modules/Intl/IntlActions';
+import { restoreCartFromCache } from '../Cart/CartActions';
+import { getProductsCount } from '../Cart/CartReducer';
 
 export class App extends Component {
   constructor(props) {
@@ -22,6 +24,7 @@ export class App extends Component {
   }
 
   componentDidMount() {
+    this.props.dispatch(restoreCartFromCache());
     this.props.dispatch(fetchCategories());
     this.setState({isMounted: true}); // eslint-disable-line
   }
@@ -54,6 +57,7 @@ export class App extends Component {
             switchLanguage={lang => this.props.dispatch(switchLanguage(lang))}
             intl={this.props.intl}
             toggleAddPost={this.toggleAddPostSection}
+            cartProductsCount={this.props.cartProductsCount}
           />
           <div className={styles.container}>
             {this.props.children}
@@ -79,8 +83,10 @@ App.propTypes = {
 
 // Retrieve data from store as props
 function mapStateToProps(store) {
+  let cartProductsCount = getProductsCount(store);
   return {
     intl: store.intl,
+    cartProductsCount
   };
 }
 

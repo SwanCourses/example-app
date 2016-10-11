@@ -19,7 +19,8 @@ export default {
     categoryName: 'Название категории',
     createNewCategory: 'Создать новую категорию',
     submit: 'Добавить',
-
+    cart: 'Корзина',
+    order: 'Заказать',
     edit: 'Редактировать',
     comment: `user {name} {value, plural,
     	  =0 {does not have any comments}

@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import styles from './ProductDetailPage.css';
 
+import { addToCart } from '../../../Cart/CartActions'
 import { Link } from 'react-router';
 // Import Selectors
 import { getProduct } from '../../ProductReducer';
@@ -12,7 +13,9 @@ export class ProductDetailPage extends Component {
   salesPrice = ()=>{
     return this.props.product.price * 0.95
   }
-
+  addProductToCart = () => {
+    this.props.dispatch(addToCart(this.props.product.cuid))
+  };
   render() {
     return (
       <div className={styles.container}>
@@ -33,6 +36,9 @@ export class ProductDetailPage extends Component {
             <div className={styles.description}>{this.props.product.description}</div>
 
             <Link to={`/products/${this.props.product.cuid}/edit`}><FormattedMessage id="edit"/></Link>
+            <div onClick={this.addProductToCart}>
+              <FormattedMessage id="order"/>
+            </div>
           </div>
         </div>
       </div>
