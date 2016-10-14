@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-fetch';
 import Config from '../../server/config';
+import { browserHistory } from 'react-router';
 
 function generateApiUrl(relativePath) {
   return (typeof window === 'undefined' || process.env.NODE_ENV === 'test') ?
@@ -12,9 +13,14 @@ const checkStatus = (response) => {
   if (response.status >= 200 && response.status < 300) {
     return response
   } else {
-    var error = new Error(response.statusText);
-    error.response = response;
-    throw error;
+    if (typeof window !== 'undefined' && response.status === 401) {
+      localStorage.removeItem('authentication_token');
+      browserHistory.push('/');
+    } else {
+      var error = new Error(response.statusText);
+      error.response = response;
+      throw error
+    }
     return Promise.reject(response);
   }
 };
@@ -28,11 +34,12 @@ const parseJSON = (response) => {
 };
 
 function fetchWrapper(url, requestOptions) {
-  return fetch(url, requestOptions)
-    .then((response)=> {
-      return checkStatus(response);
-    })
-    .then(parseJSON)
+  return fetch(url, {
+    ...requestOptions,
+    headers: { ...requestOptions.headers, "Authorization": 'JWT ' + getAuthenticationToken() }
+  }).then((response)=> {
+    return checkStatus(response);
+  }).then(parseJSON)
     .catch((error) => {
       console.log('request failed', error);
       throw error;
@@ -59,3 +66,23 @@ export function callApiForm(endpoint, method = 'get', body) {
 
   return fetchWrapper(`${API_URL}/${endpoint}`, requestOptions);
 }
+
+export const getAuthenticationToken = () => {
+  if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined') {
+    return localStorage.authentication_token
+  }
+};
+
+export const getIsAdmin = () => {
+  if (typeof window !== 'undefined' && typeof window.localStorage !== 'undefined') {
+    return JSON.parse(localStorage.is_admin) === true
+  }
+};
+
+export const isLoggedIn = () => {
+  return !!getAuthenticationToken();
+};
+
+export const isAdmin = () => {
+  return isLoggedIn() && getIsAdmin();
+};

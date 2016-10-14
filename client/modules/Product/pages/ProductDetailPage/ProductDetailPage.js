@@ -4,6 +4,8 @@ import Helmet from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import styles from './ProductDetailPage.css';
 
+
+import { isAdmin } from '../../../../util/apiCaller';
 import { addToCart } from '../../../Cart/CartActions'
 import { Link } from 'react-router';
 // Import Selectors
@@ -34,8 +36,7 @@ export class ProductDetailPage extends Component {
             <div className={styles.price}>{this.props.product.price + ' грн'}</div>
             <div className={styles.price}>{this.salesPrice() + ' грн'}</div>
             <div className={styles.description}>{this.props.product.description}</div>
-
-            <Link to={`/products/${this.props.product.cuid}/edit`}><FormattedMessage id="edit"/></Link>
+            {isAdmin() && <Link to={`/products/${this.props.product.cuid}/edit`}><FormattedMessage id="edit"/></Link>}
             <div onClick={this.addProductToCart}>
               <FormattedMessage id="order"/>
             </div>
