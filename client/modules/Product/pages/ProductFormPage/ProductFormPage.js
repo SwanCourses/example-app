@@ -58,7 +58,7 @@ class ProductFormPage extends Component {
           <input ref="photos" type="file" onChange={this.onFileLoad} multiple="multiple"/>
           <div className={styles.photos}>
             {
-              this.state.photos.map(photo =>(
+              this.state.photos &&  this.state.photos.map(photo =>(
                 <div key={photo.fileName} className={styles.picture}>
                   <img src={`/uploads/products/art_${this.props.product.code}/${photo.fileName}`}/>
                 </div>
