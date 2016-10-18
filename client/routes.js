@@ -24,6 +24,7 @@ if (process.env.NODE_ENV !== 'production') {
   require('./modules/Product/pages/ProductFormPage/ProductFormPage');
   require('./modules/Product/pages/ProductDetailPage/ProductDetailPage');
   require('./modules/User/pages/RegistrationPage/RegistrationPage');
+  require('./modules/Product/pages/ProductListPage/ProductListPage');
   require('./modules/User/pages/SignInPage/SignInPage');
 }
 
